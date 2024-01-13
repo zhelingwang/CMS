@@ -9,12 +9,17 @@ export const RouterConfig = {
     },
     list: {
         name: 'user',
-        path: '/user',
+        path: '/list',
         title: '列表'
+    },
+    listDetail: {
+        name: 'listDetail',
+        path: '/list/detail',
+        title: '详情'
     }
 }
 
-const { home, list } = RouterConfig
+const { home, list, listDetail } = RouterConfig
 
 // 具体路由
 const routes: RouteRecordRaw[] = [
@@ -31,8 +36,13 @@ const routes: RouteRecordRaw[] = [
             {
                 ...list,
                 meta: list,
-                component: () => import('@/pages/users/index.vue')
-            }
+                component: () => import('@/pages/list/index.vue')
+            },
+            {
+                ...listDetail,
+                meta: listDetail,
+                component: () => import('@/pages/detail/index.vue')
+            },
         ]
     },
 ]

@@ -6,10 +6,8 @@
 <script setup lang="ts">
 import type { MenuProps } from 'ant-design-vue';
 import { useMenuStore } from '@/store/menu'
-import { useRouter } from 'vue-router'
 
 const menuStore = useMenuStore()
-
 const router = useRouter()
 const handleClick: MenuProps['onClick'] = e => {
     const { path } = e.item.originItemValue
@@ -17,7 +15,9 @@ const handleClick: MenuProps['onClick'] = e => {
     console.log('[menu]openKeys: ', menuStore.openKeys, ', selectedKeys =', menuStore.selectedKeys);
     router.push(path)
 };
-
+onMounted(() => {
+    console.log('[menu]openKeys: ', menuStore.openKeys, ', selectedKeys =', menuStore.selectedKeys);
+})
 </script>
 
 <style scoped lang="less"></style>
