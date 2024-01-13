@@ -2,12 +2,12 @@ import { defineStore } from 'pinia'
 import { ref, h } from 'vue'
 import {
     PieChartOutlined,
-    DesktopOutlined,
+    UsergroupAddOutlined,
 } from '@ant-design/icons-vue'
 import type { ItemType } from 'ant-design-vue';
 import { RouterConfig } from '@/router'
 
-const { home, list } = RouterConfig
+const { home, customer } = RouterConfig
 
 export const useMenuStore = defineStore('menus', () => {
     const selectedKeys = ref<string[]>(['1'])
@@ -23,16 +23,10 @@ export const useMenuStore = defineStore('menus', () => {
             icon: () => h(PieChartOutlined),
         },
         {
-            label: 'other',
+            path: customer.path,
+            label: customer.title,
             key: '2',
-            icon: () => h(DesktopOutlined),
-            children: [
-                {
-                    path: list.path,
-                    label: list.title,
-                    key: '3'
-                }
-            ]
+            icon: () => h(UsergroupAddOutlined)
         }
     ]
     return {

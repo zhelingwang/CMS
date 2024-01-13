@@ -14,10 +14,7 @@ const handleClick: MenuProps['onClick'] = e => {
     menuStore.setSelectedKeys([e.key])
     console.log('[menu]openKeys: ', menuStore.openKeys, ', selectedKeys =', menuStore.selectedKeys);
     router.push(path)
-};
-onMounted(() => {
-    console.log('[menu]openKeys: ', menuStore.openKeys, ', selectedKeys =', menuStore.selectedKeys);
-})
+}
 </script>
 
 <style scoped lang="less"></style>

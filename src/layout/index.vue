@@ -7,9 +7,7 @@
         <a-layout>
             <Header />
             <a-layout-content style="margin: 16px">
-                <a-card>
-                    <router-view />
-                </a-card>
+                <router-view />
             </a-layout-content>
             <a-layout-footer style="text-align: center">
                 Alltoowell ©2024 Created by Zheling

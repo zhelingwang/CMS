@@ -22,6 +22,11 @@ export default defineConfig({
       imports: [
         'vue',
         'vue-router',
+        {
+          'dayjs': [
+            ['default', 'dayjs']
+          ]
+        }
       ]
     }),
   ],
