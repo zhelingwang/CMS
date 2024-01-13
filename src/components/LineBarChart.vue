@@ -8,6 +8,7 @@ import { useEventListener } from '@/hooks/addEventListenerHook'
 
 const props = defineProps({
   id: String,
+  type: String,
   height: {
     type: Number,
     default: 300
@@ -40,7 +41,7 @@ const initBarChart = () => {
       series: [
         {
           data: props.seriesData,
-          type: 'bar'
+          type: props.type
         }
       ]
     })
