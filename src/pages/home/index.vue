@@ -20,34 +20,45 @@
     <a-divider :style="{ margin: '8px 0', border: 'none' }"></a-divider>
     <a-row :gutter="16">
         <a-col class="gutter-row" :span="12">
-            <a-card>1</a-card>
+            <a-card title="活动">
+                <template #extra>
+                    <a-range-picker v-model:value="selectRange2" :format="dateFormat" />
+                </template>
+                <LineBarChart id="linechart2" :xAxisData="xAxis" :seriesData="data" type="line" />
+            </a-card>
         </a-col>
         <a-col class="gutter-row" :span="12">
-            <a-card>1</a-card>
+            <a-card title="占比">
+                <PieChart id="pieChart" :seriesData="pieData" />
+            </a-card>
         </a-col>
     </a-row>
 </template>
 
 <script setup>
 import LineBarChart from '@/components/LineBarChart.vue'
+import PieChart from '@/components/PieChart.vue'
 
 const monthFormat = 'YYYY/MM'
 const now = dayjs()
 const selectMonth = ref(dayjs())
 const xAxis = ref(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'])
 const data = ref([120, 200, 150, 80, 70, 110, 130])
-
-const dateFormat = 'YYYY/MM/DD'
-const selectRange = ref([
-    now.add(-7, 'day'),
-    now
+const pieData = ref([
+    { value: 1048, name: 'customers' },
+    { value: 735, name: 'robots' },
+    { value: 580, name: 'assets' },
+    { value: 484, name: 'Union Ads' },
+    { value: 300, name: 'Video Ads' }
 ])
 
-watchEffect(() => {
-})
+const dateFormat = 'YYYY/MM/DD'
+const selectRange = ref([now.add(-7, 'day'), now])
+const selectRange2 = ref([now.add(-7, 'day'), now])
 
-onMounted(() => {
-})
+watchEffect(() => { })
+
+onMounted(() => { })
 
 </script>
 

@@ -8,7 +8,8 @@ import {
     // 数据集组件
     DatasetComponent,
     // 内置数据转换器组件 (filter, sort)
-    TransformComponent
+    TransformComponent,
+    LegendComponent
 } from 'echarts/components'
 import { LabelLayout, UniversalTransition } from 'echarts/features'
 import { CanvasRenderer } from 'echarts/renderers'
@@ -19,6 +20,7 @@ echarts.use([
     GridComponent,
     DatasetComponent,
     TransformComponent,
+    LegendComponent,
     BarChart,
     LineChart,
     PieChart,

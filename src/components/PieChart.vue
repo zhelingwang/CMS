@@ -8,19 +8,17 @@ import { useEventListener } from '@/hooks/addEventListener'
 
 const props = defineProps({
   id: String,
-  type: String,
   height: {
     type: Number,
     default: 300
   },
-  xAxisData: Array,
   seriesData: Array,
 })
 
 const echarts = useChart()
 let instance = null
 
-const initBarChart = () => {
+const PieChart = () => {
   const domEle = document.getElementById(props.id)
   if (domEle) {
     if (instance) {
@@ -30,25 +28,39 @@ const initBarChart = () => {
       useEventListener(window, 'resize', instance.resize)
     }
     instance && instance.setOption({
-      xAxis: {
-        type: 'category',
-        data: props.xAxisData
+      // title: {
+      //   text: 'Referer of a Website',
+      //   subtext: 'Fake Data',
+      //   left: 'center'
+      // },
+      tooltip: {
+        trigger: 'item'
       },
-      yAxis: {
-        type: 'value'
+      legend: {
+        orient: 'vertical',
+        left: 'left'
       },
       series: [
         {
+          name: 'Access From',
+          type: 'pie',
+          radius: '50%',
           data: props.seriesData,
-          type: props.type
+          emphasis: {
+            itemStyle: {
+              shadowBlur: 10,
+              shadowOffsetX: 0,
+              shadowColor: 'rgba(0, 0, 0, 0.5)'
+            }
+          }
         }
       ]
     })
   }
 }
 
-watch(() => [props.xAxisData, props.seriesData], () => {
-  initBarChart()
+watch(() => [props.seriesData], () => {
+  PieChart()
 })
 
 const style = computed(() => ({
@@ -56,7 +68,7 @@ const style = computed(() => ({
 }))
 
 onMounted(() => {
-  initBarChart()
+  PieChart()
 })
 </script>
 
