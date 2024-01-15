@@ -8,6 +8,9 @@ import type { ItemType } from 'ant-design-vue';
 import { RouterConfig } from '@/router'
 
 const { home, customer } = RouterConfig
+type extraItemType = ItemType | {
+    path: string
+}
 
 export const useMenuStore = defineStore('menus', () => {
     const selectedKeys = ref<string[]>(['1'])
@@ -15,7 +18,7 @@ export const useMenuStore = defineStore('menus', () => {
         selectedKeys.value = valArr
     }
     const openKeys = ref<string[]>(['2'])
-    const menusArr: Array<ItemType> = [
+    const menusArr: Array<extraItemType> = [
         {
             path: home.path,
             label: home.title,
